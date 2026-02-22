@@ -6,7 +6,6 @@ from gui.Scaleform.framework.managers.loaders import SFViewLoadParams
 from gui.shared.utils.key_mapping import getBigworldNameFromKey
 from gui import InputHandler
 from console.window import ConsoleWindow
-import Keys
 
 def init():
     settings = ViewSettings(ConsoleWindow.alias(), ConsoleWindow, ConsoleWindow.swf(), WindowLayer.WINDOW, None, ScopeTemplates.VIEW_SCOPE)
@@ -16,11 +15,10 @@ def init():
 def fini():
     InputHandler.g_instance.onKeyDown -= onhandleKeyEvent
 
-def onhandleKeyEvent(event):
-    if event.isKeyDown():
-        if event.key == Keys.KEY_F10:
-            # idk how to close, im not good in flash
-            showWindow()
+def onKeyEvent(event):
+      if event.isKeyDown():
+           if event.key == Keys.KEY_F10:
+               showWindow()
 
 def showWindow():
     appLoader = dependency.instance(IAppLoader)
